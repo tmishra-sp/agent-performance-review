@@ -8,7 +8,7 @@ Security fixes are applied to the latest released version.
 
 Please report vulnerabilities privately via GitHub Security Advisories:
 
-- https://github.com/tripti-sp/agent-performance-review/security/advisories/new
+- https://github.com/tmishra-sp/agent-performance-review/security/advisories/new
 
 Do not open a public issue for undisclosed vulnerabilities.
 

@@ -95,8 +95,8 @@ python3 scripts/generate-card.py /tmp/perf.json examples/sample-card.png --fonts
 
 - OpenClaw (recent version)
 - `jq`
-- `python3`
-- `Pillow` (installed by `scripts/install-deps.sh`)
+- `python3` (3.11+ recommended; avoid Xcode-bundled 3.9)
+- dependencies in `requirements.txt` (install via `./scripts/install-deps.sh`)
 
 ## Quality bar
 
