@@ -1,0 +1,94 @@
+{
+  "patterns": [
+    {
+      "id": "expensive_heartbeats",
+      "condition": "heartbeat_cost_pct > 30",
+      "category": "COST",
+      "template": "Switch heartbeat model to {cheapest_model} — saves ~${estimated_savings}/week",
+      "config_change": "agents.defaults.heartbeat.model -> \"{cheapest_model}\"",
+      "impact": "Reduces heartbeat cost by ~{reduction_pct}%",
+      "priority": 1
+    },
+    {
+      "id": "unused_skills",
+      "condition": "unused_skills_count > 3",
+      "category": "CLEANUP",
+      "template": "Disable {unused_count} unused skills ({unused_names_short}) — reduces prompt size",
+      "config_change": "skills.entries.{skill_name}.enabled -> false",
+      "impact": "Saves ~{token_savings} tokens per session",
+      "priority": 3
+    },
+    {
+      "id": "night_activity",
+      "condition": "three_am_sessions > 2 AND three_am_useful_rate < 0.3",
+      "category": "EFFICIENCY",
+      "template": "Restrict heartbeats to waking hours — {three_am_sessions} overnight sessions, {three_am_useful} were useful",
+      "config_change": "agents.defaults.heartbeat.activeHours -> { start: \"08:00\", end: \"24:00\" }",
+      "impact": "Eliminates ~${overnight_cost} in overnight API costs",
+      "priority": 2
+    },
+    {
+      "id": "high_error_rate",
+      "condition": "error_rate > 0.1",
+      "category": "RELIABILITY",
+      "template": "Error rate at {error_rate_pct}% — review failing task types and add guardrails",
+      "config_change": null,
+      "impact": "Reduces wasted API calls on failing execution paths",
+      "priority": 2
+    },
+    {
+      "id": "expensive_per_task",
+      "condition": "cost_per_task > 1.0",
+      "category": "COST",
+      "template": "At ${cost_per_task}/task, use {cheaper_model} for routine requests",
+      "config_change": "agents.defaults.model -> \"{cheaper_model}\" with stronger model override for complex tasks",
+      "impact": "Could reduce per-task cost by ~{reduction_pct}%",
+      "priority": 2
+    },
+    {
+      "id": "bloated_memory",
+      "condition": "read_write_ratio > 50",
+      "category": "EFFICIENCY",
+      "template": "Read/write ratio is {read_write_ratio}:1 — MEMORY.md may need restructuring",
+      "config_change": null,
+      "impact": "Cuts wasteful retrieval cycles and improves response speed",
+      "priority": 3
+    },
+    {
+      "id": "overflow_pressure",
+      "condition": "context_overflows > 2",
+      "category": "RELIABILITY",
+      "template": "Context overflow occurred {context_overflows} times — tune compaction threshold and trim long memory files",
+      "config_change": "agents.defaults.compaction.thresholdTokens -> {suggested_threshold}",
+      "impact": "Lowers hard-failure probability on long sessions",
+      "priority": 2
+    },
+    {
+      "id": "dominant_skill",
+      "condition": "top_skill_pct > 50",
+      "category": "EFFICIENCY",
+      "template": "{top_skill_name} drove {top_skill_pct}% of tool calls — consider a dedicated specialized agent",
+      "config_change": null,
+      "impact": "Improves latency by reducing generalist prompt overhead",
+      "priority": 4
+    },
+    {
+      "id": "self_initiated_waste",
+      "condition": "self_initiated_cost_pct > 20 AND autonomous_useful_rate < 0.25",
+      "category": "COST",
+      "template": "Self-initiated sessions consumed {self_initiated_cost_pct}% of spend with low usefulness; tighten trigger rules",
+      "config_change": "agents.defaults.heartbeat.minTriggerConfidence -> {suggested_confidence}",
+      "impact": "Removes low-value autonomous runs",
+      "priority": 2
+    },
+    {
+      "id": "high_tool_failures",
+      "condition": "tool_failures > 20",
+      "category": "RELIABILITY",
+      "template": "Tool failures reached {tool_failures}; add retries and precondition checks for unstable tools",
+      "config_change": null,
+      "impact": "Reduces interrupted task chains and abandoned work",
+      "priority": 3
+    }
+  ]
+}

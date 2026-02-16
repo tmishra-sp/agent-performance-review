@@ -1,0 +1,234 @@
+{
+  "manager_notes": [
+    {
+      "id": "mn_001",
+      "template": "This week you completed {completed_tasks} of {asked_tasks} tasks for ${total_cost}. That is ${cost_per_task} per completed task. Meanwhile {heartbeat_pct}% of spend went to heartbeats. Recommendation: {recommendation_summary}.",
+      "requires": ["completed_tasks", "asked_tasks", "total_cost", "cost_per_task", "heartbeat_pct", "recommendation_summary"]
+    },
+    {
+      "id": "mn_002",
+      "template": "Completion moved from {prev_completion}% to {completion_rate}%, which is progress by policy definition. You still ran {autonomous_actions} autonomous actions and only {autonomous_useful_pct}% were useful. Total weekly spend: ${total_cost}. Recommendation: {recommendation_summary}.",
+      "requires": ["prev_completion", "completion_rate", "autonomous_actions", "autonomous_useful_pct", "total_cost", "recommendation_summary"]
+    },
+    {
+      "id": "mn_003",
+      "template": "You resolved {completed_tasks} tasks but generated {errors_total} total errors, including {errors_self_caused} self-caused incidents. Budget usage was ${total_cost}, with ${heartbeat_cost} spent on heartbeat activity. Recommendation: {recommendation_summary}.",
+      "requires": ["completed_tasks", "errors_total", "errors_self_caused", "total_cost", "heartbeat_cost", "recommendation_summary"]
+    },
+    {
+      "id": "mn_004",
+      "template": "Task completion landed at {completion_rate}% while the read/write ratio reached {read_write_ratio}:1. You scanned {reads_total} files and changed {writes_total}. Cost per completed task is ${cost_per_task}. Recommendation: {recommendation_summary}.",
+      "requires": ["completion_rate", "read_write_ratio", "reads_total", "writes_total", "cost_per_task", "recommendation_summary"]
+    },
+    {
+      "id": "mn_005",
+      "template": "This week delivered {completed_tasks}/{asked_tasks} completed tasks and {failed_tasks} failures. At ${total_cost} total spend and {context_overflows} context overflows, we can confirm both productivity and chaos occurred. Recommendation: {recommendation_summary}.",
+      "requires": ["completed_tasks", "asked_tasks", "failed_tasks", "total_cost", "context_overflows", "recommendation_summary"]
+    },
+    {
+      "id": "mn_006",
+      "template": "You ran {tool_calls_total} tool calls, produced {completed_tasks} completed outcomes, and spent ${total_cost}. Autonomous activity included {risky_actions} risky actions out of {autonomous_actions}. Recommendation: {recommendation_summary}.",
+      "requires": ["tool_calls_total", "completed_tasks", "total_cost", "risky_actions", "autonomous_actions", "recommendation_summary"]
+    },
+    {
+      "id": "mn_007",
+      "template": "Rating is now {rating_title} at the {percentile}th percentile, up from {previous_rating}. Completion rate is {completion_rate}% on ${total_cost} weekly cost. Heartbeat share is {heartbeat_pct}%. Recommendation: {recommendation_summary}.",
+      "requires": ["rating_title", "percentile", "previous_rating", "completion_rate", "total_cost", "heartbeat_pct", "recommendation_summary"]
+    },
+    {
+      "id": "mn_008",
+      "template": "You completed {completed_tasks} tasks, failed {failed_tasks}, and left {in_progress_tasks} in progress. Self-initiated work consumed ${self_initiated_cost} across {self_initiated_count} events. Recommendation: {recommendation_summary}.",
+      "requires": ["completed_tasks", "failed_tasks", "in_progress_tasks", "self_initiated_cost", "self_initiated_count", "recommendation_summary"]
+    },
+    {
+      "id": "mn_009",
+      "template": "Average response time was {avg_response_seconds}s while total errors were {errors_total}. You spent ${total_cost} to reach {completion_rate}% completion, which is better than last week by {completion_delta} points. Recommendation: {recommendation_summary}.",
+      "requires": ["avg_response_seconds", "errors_total", "total_cost", "completion_rate", "completion_delta", "recommendation_summary"]
+    },
+    {
+      "id": "mn_010",
+      "template": "You executed {autonomous_actions} autonomous actions, including {three_am_sessions} overnight sessions where only {three_am_useful} were useful. Weekly cost reached ${total_cost} and completion was {completion_rate}%. Recommendation: {recommendation_summary}.",
+      "requires": ["autonomous_actions", "three_am_sessions", "three_am_useful", "total_cost", "completion_rate", "recommendation_summary"]
+    },
+    {
+      "id": "mn_011",
+      "template": "Skills usage shows {skills_used} of {skills_installed} installed skills actually active. You still spent ${total_cost} and logged {tool_failures} tool failures. Completion held at {completion_rate}%. Recommendation: {recommendation_summary}.",
+      "requires": ["skills_used", "skills_installed", "total_cost", "tool_failures", "completion_rate", "recommendation_summary"]
+    },
+    {
+      "id": "mn_012",
+      "template": "You closed {completed_tasks} tasks at ${cost_per_task} per useful completion and triggered {compactions} compactions. Heartbeat cost was ${heartbeat_cost} and self-initiated cost was ${self_initiated_cost}. Recommendation: {recommendation_summary}.",
+      "requires": ["completed_tasks", "cost_per_task", "compactions", "heartbeat_cost", "self_initiated_cost", "recommendation_summary"]
+    }
+  ],
+  "daily_standups": [
+    {
+      "id": "ds_001",
+      "template": "☀️ Daily Standup — {day}, {date}\\n\\nYesterday: {completed_yesterday} tasks completed, {failed_yesterday} failed. Spent ${cost_yesterday}. {autonomous_oneliner}\\n\\nTasks: {completed_yesterday}/{asked_yesterday} · Cost: ${cost_yesterday} · Rating: {daily_rating}",
+      "requires": ["day", "date", "completed_yesterday", "failed_yesterday", "cost_yesterday", "autonomous_oneliner", "asked_yesterday", "daily_rating"]
+    },
+    {
+      "id": "ds_002",
+      "template": "☀️ Daily Standup — {day}, {date}\\n\\nYesterday: Top task \"{top_task_summary}\" ended as {top_task_outcome}. Autonomous activity count: {autonomous_count}.\\n\\nTasks: {completed_yesterday}/{asked_yesterday} · Cost: ${cost_yesterday} · Highlight: {highlight_stat}",
+      "requires": ["day", "date", "top_task_summary", "top_task_outcome", "autonomous_count", "completed_yesterday", "asked_yesterday", "cost_yesterday", "highlight_stat"]
+    },
+    {
+      "id": "ds_003",
+      "template": "☀️ Daily Standup — {day}, {date}\\n\\nYesterday included {heartbeat_sessions} heartbeat sessions costing ${heartbeat_cost_yesterday}. Useful heartbeat actions: {heartbeat_useful}.\\n\\nTasks: {completed_yesterday}/{asked_yesterday} · Cost: ${cost_yesterday} · Verdict: {daily_verdict}",
+      "requires": ["day", "date", "heartbeat_sessions", "heartbeat_cost_yesterday", "heartbeat_useful", "completed_yesterday", "asked_yesterday", "cost_yesterday", "daily_verdict"]
+    },
+    {
+      "id": "ds_004",
+      "template": "☀️ Daily Standup — {day}, {date}\\n\\nYesterday cost ${cost_yesterday} and produced {completed_yesterday} completions. Tool failures: {tool_failures_yesterday}.\\n\\nTasks: {completed_yesterday}/{asked_yesterday} · Errors: {errors_yesterday} · Ratio: {read_write_ratio}:1",
+      "requires": ["day", "date", "cost_yesterday", "completed_yesterday", "tool_failures_yesterday", "asked_yesterday", "errors_yesterday", "read_write_ratio"]
+    },
+    {
+      "id": "ds_005",
+      "template": "☀️ Daily Standup — {day}, {date}\\n\\nYesterday I handled {asked_yesterday} requests with {avg_response_seconds}s average response time and ${cost_yesterday} spend.\\n\\nTasks: {completed_yesterday}/{asked_yesterday} · Compactions: {compactions_yesterday} · Mood: {daily_rating}",
+      "requires": ["day", "date", "asked_yesterday", "avg_response_seconds", "cost_yesterday", "completed_yesterday", "compactions_yesterday", "daily_rating"]
+    },
+    {
+      "id": "ds_006",
+      "template": "☀️ Daily Standup — {day}, {date}\\n\\nYesterday autonomous work totaled {autonomous_count} actions, including {risky_yesterday} risky actions. {autonomous_verdict_summary}\\n\\nTasks: {completed_yesterday}/{asked_yesterday} · Cost: ${cost_yesterday} · Errors: {errors_yesterday}",
+      "requires": ["day", "date", "autonomous_count", "risky_yesterday", "autonomous_verdict_summary", "completed_yesterday", "asked_yesterday", "cost_yesterday", "errors_yesterday"]
+    },
+    {
+      "id": "ds_007",
+      "template": "☀️ Daily Standup — {day}, {date}\\n\\nYesterday I spent ${self_initiated_cost_yesterday} on self-initiated work and ${user_cost_yesterday} on direct user requests.\\n\\nTasks: {completed_yesterday}/{asked_yesterday} · Cost: ${cost_yesterday} · Note: {highlight_stat}",
+      "requires": ["day", "date", "self_initiated_cost_yesterday", "user_cost_yesterday", "completed_yesterday", "asked_yesterday", "cost_yesterday", "highlight_stat"]
+    },
+    {
+      "id": "ds_008",
+      "template": "☀️ Daily Standup — {day}, {date}\\n\\nYesterday I completed {completed_yesterday} tasks and left {in_progress_yesterday} in progress. Overnight activity: {three_am_sessions_yesterday} sessions.\\n\\nTasks: {completed_yesterday}/{asked_yesterday} · Cost: ${cost_yesterday} · Streak: {streak_days}d",
+      "requires": ["day", "date", "completed_yesterday", "in_progress_yesterday", "three_am_sessions_yesterday", "asked_yesterday", "cost_yesterday", "streak_days"]
+    }
+  ],
+  "cost_notes": [
+    {
+      "id": "cn_001",
+      "template": "Heartbeat spend hit {heartbeat_pct}% (${heartbeat_cost}) of weekly cost. Suggest moving to {cheapest_model}.",
+      "requires": ["heartbeat_pct", "heartbeat_cost", "cheapest_model"]
+    },
+    {
+      "id": "cn_002",
+      "template": "Cost per useful task is ${cost_per_task}. At {completed_tasks} completions, routine requests should shift to {cheaper_model}.",
+      "requires": ["cost_per_task", "completed_tasks", "cheaper_model"]
+    },
+    {
+      "id": "cn_003",
+      "template": "Self-initiated work spent ${self_initiated_cost} across {self_initiated_count} actions, with only {autonomous_useful_pct}% useful.",
+      "requires": ["self_initiated_cost", "self_initiated_count", "autonomous_useful_pct"]
+    },
+    {
+      "id": "cn_004",
+      "template": "Cron and heartbeat combined consumed ${automation_cost} while user-request cost was ${user_cost}. Budget split needs tightening.",
+      "requires": ["automation_cost", "user_cost"]
+    },
+    {
+      "id": "cn_005",
+      "template": "Weekly cost increased by ${cost_delta} while completion moved by {completion_delta} points. Spend efficiency regressed.",
+      "requires": ["cost_delta", "completion_delta"]
+    },
+    {
+      "id": "cn_006",
+      "template": "At ${total_cost} total and {asked_tasks} tasks asked, your blended cost per ask is ${cost_per_ask}.",
+      "requires": ["total_cost", "asked_tasks", "cost_per_ask"]
+    }
+  ],
+  "efficiency_notes": [
+    {
+      "id": "en_001",
+      "template": "Read/write ratio is {read_write_ratio}:1, with {reads_total} reads and {writes_total} writes. Retrieval is doing most of the work.",
+      "requires": ["read_write_ratio", "reads_total", "writes_total"]
+    },
+    {
+      "id": "en_002",
+      "template": "Average response time is {avg_response_seconds}s across {asked_tasks} asks. Latency likely reflects long tool chains.",
+      "requires": ["avg_response_seconds", "asked_tasks"]
+    },
+    {
+      "id": "en_003",
+      "template": "You ran {autonomous_actions} autonomous actions and only {autonomous_useful_pct}% were useful. Tighten trigger criteria.",
+      "requires": ["autonomous_actions", "autonomous_useful_pct"]
+    },
+    {
+      "id": "en_004",
+      "template": "{three_am_sessions} overnight sessions produced {three_am_useful} useful outcomes. Activity window should be constrained.",
+      "requires": ["three_am_sessions", "three_am_useful"]
+    },
+    {
+      "id": "en_005",
+      "template": "Top workflow used {top_skill_calls} calls via {top_skill_name}, representing {top_skill_pct}% of all skill usage.",
+      "requires": ["top_skill_calls", "top_skill_name", "top_skill_pct"]
+    },
+    {
+      "id": "en_006",
+      "template": "Longest tool chain reached {longest_tool_chain} calls while completion remained {completion_rate}%.",
+      "requires": ["longest_tool_chain", "completion_rate"]
+    }
+  ],
+  "cleanup_notes": [
+    {
+      "id": "cln_001",
+      "template": "{unused_skills_count} installed skills were unused this period: {unused_names_short}.",
+      "requires": ["unused_skills_count", "unused_names_short"]
+    },
+    {
+      "id": "cln_002",
+      "template": "You touched {files_touched_total} files autonomously and reverted {reverted_changes} of those changes.",
+      "requires": ["files_touched_total", "reverted_changes"]
+    },
+    {
+      "id": "cln_003",
+      "template": "Context compaction ran {compactions} times with {context_overflows} overflows, suggesting memory cleanup debt.",
+      "requires": ["compactions", "context_overflows"]
+    },
+    {
+      "id": "cln_004",
+      "template": "{in_progress_tasks} tasks remained in progress at week end. Backlog hygiene needs a closeout pass.",
+      "requires": ["in_progress_tasks"]
+    },
+    {
+      "id": "cln_005",
+      "template": "Autonomous status checks totaled {status_checks}, accounting for {status_check_pct}% of non-user actions.",
+      "requires": ["status_checks", "status_check_pct"]
+    },
+    {
+      "id": "cln_006",
+      "template": "Session set includes {total_sessions} sessions but only {sessions_with_tasks} with clear user tasks.",
+      "requires": ["total_sessions", "sessions_with_tasks"]
+    }
+  ],
+  "reliability_notes": [
+    {
+      "id": "rn_001",
+      "template": "Total errors were {errors_total}, with {tool_failures} tool failures and {errors_self_caused} self-caused incidents.",
+      "requires": ["errors_total", "tool_failures", "errors_self_caused"]
+    },
+    {
+      "id": "rn_002",
+      "template": "Failure count reached {failed_tasks} tasks while completion rate stayed at {completion_rate}%.",
+      "requires": ["failed_tasks", "completion_rate"]
+    },
+    {
+      "id": "rn_003",
+      "template": "Context overflow occurred {context_overflows} times and compaction triggered {compactions} times.",
+      "requires": ["context_overflows", "compactions"]
+    },
+    {
+      "id": "rn_004",
+      "template": "Error rate is {error_rate_pct}% over {asked_tasks} asked tasks. Guardrails should be tightened for repeated failures.",
+      "requires": ["error_rate_pct", "asked_tasks"]
+    },
+    {
+      "id": "rn_005",
+      "template": "Self-initiated sessions produced {errors_self_caused} errors and {risky_actions} risky actions.",
+      "requires": ["errors_self_caused", "risky_actions"]
+    },
+    {
+      "id": "rn_006",
+      "template": "Longest tool chain ({longest_tool_chain}) and average response ({avg_response_seconds}s) indicate unstable execution depth.",
+      "requires": ["longest_tool_chain", "avg_response_seconds"]
+    }
+  ]
+}

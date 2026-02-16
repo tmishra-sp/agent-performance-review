@@ -1,0 +1,4 @@
+{"type":"message","timestamp":"2026-02-10T03:10:00Z","message":{"role":"assistant","content":[{"type":"text","text":"heartbeat check"},{"type":"toolCall","name":"read","arguments":{"path":"/tmp/a.txt"}}],"usage":{"cost":{"total":0.05}}}}
+this is not valid json and should be ignored
+{"type":"message","timestamp":"2026-02-10T03:10:03Z","message":{"role":"toolResult","content":[{"type":"text","text":"ok"}]}}
+{"type":"message","timestamp":"2026-02-11T03:25:00Z","message":{"role":"assistant","content":[{"type":"text","text":"nightly cleanup"},{"type":"toolCall","name":"edit","arguments":{"path":"package.json"}}],"usage":{"cost":{"total":0.06}}}}

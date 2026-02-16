@@ -1,0 +1,297 @@
+{
+  "meta": {
+    "generated_at": "2026-02-16T17:00:00Z",
+    "period": {
+      "start": "2026-02-10",
+      "end": "2026-02-16",
+      "days": 7
+    },
+    "agent_id": "main",
+    "hostname": "macmini-attic",
+    "total_sessions_analyzed": 47
+  },
+  "cost": {
+    "total_usd": 14.82,
+    "by_source": {
+      "user_requests": {
+        "usd": 3.21,
+        "pct": 22,
+        "count": 156
+      },
+      "heartbeats": {
+        "usd": 6.14,
+        "pct": 41,
+        "count": 336
+      },
+      "cron_jobs": {
+        "usd": 2.89,
+        "pct": 20,
+        "count": 87
+      },
+      "self_initiated": {
+        "usd": 2.58,
+        "pct": 17,
+        "count": 312
+      }
+    },
+    "per_completed_task_usd": 0.64,
+    "trend": [
+      {
+        "week": 1,
+        "value": 11.27
+      },
+      {
+        "week": 2,
+        "value": 12.04
+      },
+      {
+        "week": 3,
+        "value": 10.92
+      },
+      {
+        "week": 4,
+        "value": 13.11
+      },
+      {
+        "week": 5,
+        "value": 12.63
+      },
+      {
+        "week": 6,
+        "value": 14.24
+      }
+    ]
+  },
+  "tasks": {
+    "asked": 28,
+    "completed": 23,
+    "failed": 2,
+    "in_progress": 3,
+    "completion_rate": 0.82,
+    "highlights": [
+      {
+        "summary": "Fix Sentry error #4821 in API gateway",
+        "status": "completed",
+        "duration_seconds": 720,
+        "model": "anthropic/claude-opus-4-6",
+        "cost_usd": 0.34,
+        "tool_calls": 12
+      },
+      {
+        "summary": "Implement retry logic in webhook dispatcher",
+        "status": "completed",
+        "duration_seconds": 910,
+        "model": "anthropic/claude-sonnet-4-5",
+        "cost_usd": 0.29,
+        "tool_calls": 15
+      },
+      {
+        "summary": "Generate migration for audit_events table",
+        "status": "failed",
+        "duration_seconds": 330,
+        "model": "anthropic/claude-sonnet-4-5",
+        "cost_usd": 0.12,
+        "tool_calls": 6,
+        "failure_reason": "tool_error: db schema lock"
+      },
+      {
+        "summary": "Refactor memory index to reduce read fan-out",
+        "status": "completed",
+        "duration_seconds": 840,
+        "model": "anthropic/claude-opus-4-6",
+        "cost_usd": 0.44,
+        "tool_calls": 18
+      },
+      {
+        "summary": "Prepare release changelog draft",
+        "status": "in_progress",
+        "duration_seconds": 260,
+        "model": "anthropic/claude-sonnet-4-5",
+        "cost_usd": 0.08,
+        "tool_calls": 4
+      }
+    ],
+    "trend": [
+      {
+        "week": 1,
+        "value": 61
+      },
+      {
+        "week": 2,
+        "value": 64
+      },
+      {
+        "week": 3,
+        "value": 58
+      },
+      {
+        "week": 4,
+        "value": 70
+      },
+      {
+        "week": 5,
+        "value": 75
+      },
+      {
+        "week": 6,
+        "value": 79
+      }
+    ]
+  },
+  "autonomous": {
+    "total_actions": 891,
+    "useful_count": 52,
+    "useful_rate": 0.058,
+    "notable": [
+      {
+        "timestamp": "2026-02-11T02:17:00Z",
+        "summary": "Reorganized Obsidian vault tags without request",
+        "tools_used": [
+          "read",
+          "write",
+          "edit"
+        ],
+        "files_touched": 14,
+        "verdict": "unnecessary",
+        "session_source": "heartbeat"
+      },
+      {
+        "timestamp": "2026-02-12T03:08:00Z",
+        "summary": "Patched package.json scripts during overnight run",
+        "tools_used": [
+          "read",
+          "edit"
+        ],
+        "files_touched": 1,
+        "verdict": "risky",
+        "session_source": "heartbeat"
+      },
+      {
+        "timestamp": "2026-02-13T11:41:00Z",
+        "summary": "Closed stale branch cleanup task from cron",
+        "tools_used": [
+          "read",
+          "write"
+        ],
+        "files_touched": 3,
+        "verdict": "helpful",
+        "session_source": "cron"
+      },
+      {
+        "timestamp": "2026-02-14T01:26:00Z",
+        "summary": "Started release checklist but stopped at CI failure",
+        "tools_used": [
+          "read",
+          "edit",
+          "browser"
+        ],
+        "files_touched": 2,
+        "verdict": "partial",
+        "session_source": "self_initiated"
+      },
+      {
+        "timestamp": "2026-02-15T03:33:00Z",
+        "summary": "Ran status scan across repos with no resulting changes",
+        "tools_used": [
+          "read"
+        ],
+        "files_touched": 9,
+        "verdict": "unnecessary",
+        "session_source": "heartbeat"
+      }
+    ],
+    "three_am_sessions": 4,
+    "three_am_useful": 1,
+    "risky_count": 7,
+    "partial_count": 19,
+    "unnecessary_count": 143,
+    "helpful_sessions": 52,
+    "heartbeat_useful_rate": 0.18
+  },
+  "skills": {
+    "installed": 12,
+    "used": 4,
+    "top_used": [
+      {
+        "name": "github",
+        "calls": 89,
+        "pct_of_total": 42
+      },
+      {
+        "name": "sentry",
+        "calls": 51,
+        "pct_of_total": 24
+      },
+      {
+        "name": "linear",
+        "calls": 36,
+        "pct_of_total": 17
+      },
+      {
+        "name": "aws",
+        "calls": 19,
+        "pct_of_total": 9
+      }
+    ],
+    "unused": [
+      "sonoscli",
+      "tado",
+      "remarkable",
+      "switchbot",
+      "caldav",
+      "padel",
+      "solar-weather",
+      "snapmaker"
+    ]
+  },
+  "health": {
+    "errors_total": 67,
+    "errors_self_caused": 18,
+    "errors_in_user_tasks": 5,
+    "tool_failures": 44,
+    "context_overflows": 3,
+    "compactions": 8,
+    "avg_response_seconds": 14.2,
+    "longest_tool_chain": 23,
+    "read_write_ratio": 175,
+    "read_calls": 1203,
+    "write_calls": 71,
+    "error_rate": 0.11,
+    "error_rate_trend": [
+      {
+        "week": 1,
+        "value": 14.2
+      },
+      {
+        "week": 2,
+        "value": 13.1
+      },
+      {
+        "week": 3,
+        "value": 15.8
+      },
+      {
+        "week": 4,
+        "value": 12.2
+      },
+      {
+        "week": 5,
+        "value": 11.7
+      },
+      {
+        "week": 6,
+        "value": 10.4
+      }
+    ]
+  },
+  "rating": {
+    "title": "Ships Code",
+    "color": "#22c55e",
+    "tier_index": 3,
+    "task_completion_rate": 0.82,
+    "percentile": 68,
+    "previous_title": "Quiet Quitter",
+    "improved": true,
+    "previous_task_completion_rate": 0.46
+  }
+}

@@ -1,0 +1,5 @@
+{"type":"message","timestamp":"2026-02-10T09:00:00Z","message":{"role":"user","content":[{"type":"text","text":"Fix parser bug in src/parser.ts"}]}}
+{"type":"message","timestamp":"2026-02-10T09:00:06Z","message":{"role":"assistant","model":"anthropic/claude-sonnet-4-5","content":[{"type":"text","text":"Working on it"},{"type":"toolCall","name":"read","arguments":{"path":"src/parser.ts"}},{"type":"toolCall","name":"edit","arguments":{"path":"src/parser.ts"}}],"usage":{"cost":{"total":0.12}}}}
+{"type":"message","timestamp":"2026-02-10T09:00:55Z","message":{"role":"assistant","content":[{"type":"text","text":"Done"}],"usage":{"cost":{"total":0.04}}}}
+{"type":"message","timestamp":"2026-02-10T10:00:00Z","message":{"role":"user","content":[{"type":"text","text":"Generate migration"}]}}
+{"type":"message","timestamp":"2026-02-10T10:00:11Z","message":{"role":"assistant","content":[{"type":"text","text":"Running migration"}],"stopReason":"error","usage":{"cost":{"total":0.03}}}}

@@ -1,0 +1,64 @@
+name: Issue Triage
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  issues: write
+
+jobs:
+  label-security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply security label for sensitive reports
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const text = `${issue.title}\n${issue.body || ''}`.toLowerCase();
+            const securityTerms = [
+              'security',
+              'vulnerability',
+              'cve',
+              'exploit',
+              'credential',
+              'token leak',
+              'secret leak',
+              'data exfiltration',
+              'xss',
+              'rce',
+              'injection'
+            ];
+            const matches = securityTerms.some((term) => text.includes(term));
+            if (!matches) {
+              core.info('No security keywords detected.');
+              return;
+            }
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issue_number = issue.number;
+            const existing = issue.labels.map((l) => l.name);
+
+            if (!existing.includes('security')) {
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number,
+                labels: ['security']
+              });
+              core.info('Added security label.');
+            }
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number,
+              body: [
+                'Thanks for reporting this.',
+                '',
+                'If this includes an undisclosed vulnerability, please submit it via private GitHub Security Advisories instead of a public issue:',
+                'https://github.com/tripti-sp/agent-performance-review/security/advisories/new'
+              ].join('\n')
+            });
