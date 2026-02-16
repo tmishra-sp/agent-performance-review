@@ -95,7 +95,7 @@ python3 scripts/generate-card.py /tmp/perf.json examples/sample-card.png --fonts
 
 - OpenClaw (recent version)
 - `jq`
-- `python3` (3.11+ recommended; avoid Xcode-bundled 3.9)
+- `python3` (3.10+ required, 3.11+ recommended; avoid Xcode-bundled 3.9)
 - dependencies in `requirements.txt` (install via `./scripts/install-deps.sh`)
 
 ## Quality bar
