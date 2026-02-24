@@ -106,6 +106,10 @@ This repo includes:
 - fuzz/property checks for analyzer and card renderer,
 - release preflight checks for dimensions, size, JSON validity, and tests.
 
+## Current measurable outcome
+
+- Security baseline (2026-02-24): `0` known dependency vulnerabilities from `pip-audit -r requirements.txt` on Python 3.11.
+
 Run everything:
 
 ```bash
