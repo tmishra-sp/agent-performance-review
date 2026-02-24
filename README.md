@@ -18,7 +18,7 @@ Agent Performance Review is an OpenClaw skill that audits what your agent *actua
 
 Paste into your agent chat (Telegram / Discord / WhatsApp):
 
-> install github.com/tripti-sp/agent-performance-review
+> install github.com/tmishra-sp/agent-performance-review
 
 On first install, the agent analyzes available local history and typically sends the first review in about a minute.
 

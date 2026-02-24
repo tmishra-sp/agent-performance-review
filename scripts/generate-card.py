@@ -1040,7 +1040,7 @@ def render_card(
     draw.text((48, 1548), "IS MY AGENT WORKING OR JUST VIBING?", fill=TEXT_MED, font=fonts["heading"])
     draw.text(
         (WIDTH - 48, 1548),
-        "github.com/tripti-sp/agent-performance-review",
+        "github.com/tmishra-sp/agent-performance-review",
         fill=TEXT_DIM,
         font=fonts["mono_sm"],
         anchor="ra",
