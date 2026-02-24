@@ -610,7 +610,8 @@ def choose_manager_note(analysis: Dict, roasts_path: Path, seed: Optional[int] =
             agent = analysis.get("meta", {}).get("agent_id", "agent")
             digest = hashlib.sha256(f"{agent}:{period}".encode("utf-8")).hexdigest()[:8]
             seed = int(digest, 16)
-        rng = random.Random(seed)
+        # Deterministic template choice only; not used for cryptography.
+        rng = random.Random(seed)  # nosec B311
         template = rng.choice(candidates).get("template", template)
 
     rendered = fill_template(template, values)

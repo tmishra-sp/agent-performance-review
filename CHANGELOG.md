@@ -4,6 +4,23 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-02-24
+
+### Added
+- Dedicated `Security` workflow (`.github/workflows/security.yml`) running `pip-audit` and `bandit`.
+- Dependabot configuration for `pip` and GitHub Actions updates (`.github/dependabot.yml`).
+- Central dependency manifest (`requirements.txt`).
+
+### Changed
+- Pinned GitHub Actions to immutable commit SHAs in CI and triage workflows.
+- Updated issue-triage advisory link to current repository owner.
+- Enforced Python `>=3.10` in dependency installer and switched installer to `python3 -m pip`.
+- Updated Pillow constraint to `>=12.1.1,<13.0.0`.
+
+### Security
+- Enabled GitHub vulnerability alerts and required `security` status checks on `main`.
+- Preserved strict branch protections (PR required, review required, no force-push/delete).
+
 ## [1.0.0] - 2026-02-16
 
 ### Added

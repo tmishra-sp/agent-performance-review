@@ -95,7 +95,7 @@ python3 scripts/generate-card.py /tmp/perf.json examples/sample-card.png --fonts
 
 - OpenClaw (recent version)
 - `jq`
-- `python3` (3.11+ recommended; avoid Xcode-bundled 3.9)
+- `python3` (3.10+ required, 3.11+ recommended; avoid Xcode-bundled 3.9)
 - dependencies in `requirements.txt` (install via `./scripts/install-deps.sh`)
 
 ## Quality bar
@@ -105,6 +105,10 @@ This repo includes:
 - malformed-input failure-path tests,
 - fuzz/property checks for analyzer and card renderer,
 - release preflight checks for dimensions, size, JSON validity, and tests.
+
+## Current measurable outcome
+
+- Security baseline (2026-02-24): `0` known dependency vulnerabilities from `pip-audit -r requirements.txt` on Python 3.11.
 
 Run everything:
 
