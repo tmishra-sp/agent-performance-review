@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Added
+- `scripts/pilot-scorecard.py` to compare baseline vs current analysis snapshots and produce leader-friendly impact scorecards (Markdown/JSON).
+- Test fixtures and CI coverage for scorecard generation.
+
 ## [1.0.1] - 2026-02-24
 
 ### Added
