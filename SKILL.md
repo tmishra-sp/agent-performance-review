@@ -13,7 +13,7 @@ metadata:
     install:
       - id: pip-pillow
         kind: download
-        label: "Install Pillow for card generation"
+        label: "Install Python dependencies for report generation"
     skillKey: agent-performance-review
 ---
 
@@ -213,7 +213,7 @@ Typical commands:
 python3 scripts/generate-card.py /tmp/perf-week.json /tmp/perf-week.png --fonts-dir card-template/fonts
 ```
 
-If Pillow is missing, run:
+If Python dependencies are missing (for example Pillow), run:
 ```bash
 ./scripts/install-deps.sh
 ```

@@ -4,20 +4,26 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 ANALYZER="$ROOT/scripts/analyze.sh"
 CARD="$ROOT/scripts/generate-card.py"
+SCORECARD="$ROOT/scripts/pilot-scorecard.py"
 FUZZ_ANALYZE="$ROOT/tests/fuzz_analyze.py"
 FUZZ_CARD="$ROOT/tests/fuzz_card.py"
 FIXTURE_SESSIONS="$ROOT/tests/fixtures/sessions"
 FIXTURE_CONFIG="$ROOT/tests/fixtures/openclaw.json"
 MINIMAL_ANALYSIS="$ROOT/tests/fixtures/minimal-analysis.json"
+BASELINE_ANALYSIS="$ROOT/tests/fixtures/baseline-analysis.json"
+CURRENT_ANALYSIS="$ROOT/tests/fixtures/current-analysis.json"
 OUT_JSON="$(mktemp)"
 OUT_PNG="$(mktemp /tmp/apr-card.XXXXXX).png"
 OUT_PNG_MIN="$(mktemp /tmp/apr-card-min.XXXXXX).png"
+OUT_SCORE_JSON="$(mktemp)"
+OUT_SCORE_MD="$(mktemp)"
 INVALID_ANALYSIS="$(mktemp)"
 ERR_LOG="$(mktemp)"
-trap 'rm -f "$OUT_JSON" "$OUT_PNG" "$OUT_PNG_MIN" "$INVALID_ANALYSIS" "$ERR_LOG"' EXIT
+trap 'rm -f "$OUT_JSON" "$OUT_PNG" "$OUT_PNG_MIN" "$OUT_SCORE_JSON" "$OUT_SCORE_MD" "$INVALID_ANALYSIS" "$ERR_LOG"' EXIT
 
 bash -n "$ANALYZER"
 python3 -m py_compile "$CARD"
+python3 -m py_compile "$SCORECARD"
 python3 -m py_compile "$FUZZ_ANALYZE" "$FUZZ_CARD"
 jq empty "$ROOT/references/roasts.json" "$ROOT/references/recommendations.json" "$ROOT/examples/sample-analysis.json"
 
@@ -66,6 +72,17 @@ fi
 if ! grep -Eiq "not valid JSON|analysis file" "$ERR_LOG"; then
   echo "Expected clear JSON parsing error message, got:" >&2
   cat "$ERR_LOG" >&2
+  exit 1
+fi
+
+python3 "$SCORECARD" "$BASELINE_ANALYSIS" "$CURRENT_ANALYSIS" --format json --output "$OUT_SCORE_JSON"
+jq -e '.summary.score == 100 and .summary.verdict == "strong_improvement"' "$OUT_SCORE_JSON" >/dev/null
+jq -e '.metrics | length == 5' "$OUT_SCORE_JSON" >/dev/null
+jq -e '[.metrics[] | select(.improved == true)] | length == 5' "$OUT_SCORE_JSON" >/dev/null
+
+python3 "$SCORECARD" "$BASELINE_ANALYSIS" "$CURRENT_ANALYSIS" --format markdown --output "$OUT_SCORE_MD"
+if ! grep -q "Pilot Impact Scorecard" "$OUT_SCORE_MD"; then
+  echo "Expected markdown scorecard header in output." >&2
   exit 1
 fi
 

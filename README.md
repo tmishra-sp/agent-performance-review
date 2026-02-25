@@ -89,6 +89,9 @@ Analyzer guardrails are built in:
 
 # Generate card
 python3 scripts/generate-card.py /tmp/perf.json examples/sample-card.png --fonts-dir card-template/fonts --seed 7
+
+# Compare pilot baseline vs current window (leader-ready ROI scorecard)
+python3 scripts/pilot-scorecard.py /tmp/perf-baseline.json /tmp/perf-current.json --format markdown --output /tmp/pilot-scorecard.md
 ```
 
 ## Requirements
@@ -104,6 +107,7 @@ This repo includes:
 - fixture-based behavioral tests,
 - malformed-input failure-path tests,
 - fuzz/property checks for analyzer and card renderer,
+- deterministic pilot scorecard validation,
 - release preflight checks for dimensions, size, JSON validity, and tests.
 
 ## Current measurable outcome
@@ -126,6 +130,7 @@ agent-performance-review/
 │   ├── analyze.sh
 │   ├── generate-card.py
 │   ├── install-deps.sh
+│   ├── pilot-scorecard.py
 │   └── release-preflight.sh
 ├── references/
 │   ├── roasts.json

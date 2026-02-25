@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "period": {
+      "start": "2026-02-17",
+      "end": "2026-02-23"
+    }
+  },
+  "cost": {
+    "total_usd": 78.0,
+    "by_source": {
+      "heartbeats": {
+        "pct": 24
+      }
+    }
+  },
+  "tasks": {
+    "asked": 112,
+    "completion_rate": 0.77
+  },
+  "health": {
+    "error_rate": 0.09
+  },
+  "autonomous": {
+    "useful_rate": 0.21
+  }
+}
