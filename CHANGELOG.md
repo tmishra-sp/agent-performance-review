@@ -8,6 +8,9 @@ All notable changes to this project are documented here.
 - `scripts/pilot-scorecard.py` to compare baseline vs current analysis snapshots and produce leader-friendly impact scorecards (Markdown/JSON).
 - Test fixtures and CI coverage for scorecard generation.
 
+### Security
+- Updated Pillow constraint to `>=13.0.0,<14.0.0` to pick up fixes for 8 advisories in Pillow 12.x.
+
 ## [1.0.1] - 2026-02-24
 
 ### Added
